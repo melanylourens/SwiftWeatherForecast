@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sea_sunnypng" translatesAutoresizingMaskIntoConstraints="NO" id="GGV-K8-HYM">
+                                <rect key="frame" x="0.0" y="20" width="375" height="320"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxa-aU-IaR" userLabel="Current Temp">
+                                <rect key="frame" x="0.0" y="140" width="375" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDp-r1-SfJ">
+                                <rect key="frame" x="0.0" y="208" width="375" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-ER-Nnw" userLabel="MinMax">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="C1u-jp-3bv">
+                                        <rect key="frame" x="0.0" y="0.0" width="215" height="647"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4bV-9w-lQk">
+                                        <rect key="frame" x="215" y="0.0" width="50" height="647"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uV2-kT-br3">
+                                        <rect key="frame" x="265" y="0.0" width="110" height="647"/>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RXF-ER-Nnw" secondAttribute="bottom" id="0Nd-B4-SzT"/>
+                            <constraint firstItem="GGV-K8-HYM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="I3V-a3-a33"/>
+                            <constraint firstItem="RXF-ER-Nnw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ItJ-Ub-w5i"/>
+                            <constraint firstItem="zxa-aU-IaR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TKa-hh-X3c"/>
+                            <constraint firstItem="GGV-K8-HYM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="f1x-8X-OTq"/>
+                            <constraint firstItem="zxa-aU-IaR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="gOk-ti-03Z"/>
+                            <constraint firstItem="RDp-r1-SfJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hMO-Kl-H3W"/>
+                            <constraint firstItem="GGV-K8-HYM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="m61-VG-ICF"/>
+                            <constraint firstItem="zxa-aU-IaR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qEx-qb-M33"/>
+                            <constraint firstItem="RXF-ER-Nnw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qyK-fQ-olh"/>
+                            <constraint firstItem="RDp-r1-SfJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sdC-xG-8bi"/>
+                            <constraint firstItem="RDp-r1-SfJ" firstAttribute="top" secondItem="zxa-aU-IaR" secondAttribute="bottom" constant="8" id="xzq-ie-YbV"/>
+                            <constraint firstItem="RXF-ER-Nnw" firstAttribute="top" secondItem="GGV-K8-HYM" secondAttribute="top" id="yJn-0h-2hT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImage" destination="GGV-K8-HYM" id="2X5-jA-bwf"/>
+                        <outlet property="currentTemp" destination="zxa-aU-IaR" id="SuH-jK-ytq"/>
+                        <outlet property="weatherType" destination="RDp-r1-SfJ" id="7xu-2i-Hln"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="sea_sunnypng" width="360" height="320"/>
+    </resources>
+</document>
