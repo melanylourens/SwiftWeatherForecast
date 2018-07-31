@@ -31,19 +31,10 @@ struct Temp : Codable {
     let current : Double
     let min : Int
     let max : Int
-
+    
     enum CodingKeys: String, CodingKey {
         case current = "temp"
         case min = "temp_min"
         case max = "temp_max"
-   }
-}
-
-struct Weather : Codable {
-    let type : String
-    
-    enum CodingKeys: String, CodingKey {
-        case type = "main"
     }
-    
 }

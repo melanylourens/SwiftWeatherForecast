@@ -51,14 +51,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if let location: CLLocationCoordinate2D = locations.first?.coordinate { //manager.location!.coordinate
             print("locations", location.latitude, location.longitude)
             fetchWeather(latitude: location.latitude, longitude: location.longitude)
+            fetchForecast(latitude: location.latitude, longitude: location.longitude)
         }
     }
 
     func fetchWeather(latitude: Double, longitude: Double) {
-        let weatherApi = WeatherAPIClient()
-        let weatherEndpoint = WeatherEndpoint.weatherForecast(latitude: String(latitude), longitude: String(longitude))
-
-        weatherApi.weather(with: weatherEndpoint, completion: { (result) in
+        WeatherAPIClient().fetchWeather(latitude: String(latitude), longitude: String(longitude), completion: { (result) in
             switch result {
             case .value(let weather):
                 print("weather", weather)
@@ -81,6 +79,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.weatherType.text = String(weatherTypeText)
             }
         }
+    }
+    
+    func fetchForecast(latitude: Double, longitude: Double) {
+        WeatherAPIClient().fetchForecast(latitude: String(latitude), longitude: String(longitude), completion: { (result) in
+            switch result {
+            case .value(let forecast):
+                print("forecast", forecast)
+                self.updateUIFields(forecast: forecast)
+            case .error(let error):
+                print("error", error)
+            }
+        })
+    }
+    
+    func updateUIFields(forecast: Forecast) {
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

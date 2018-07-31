@@ -10,7 +10,7 @@ import Foundation
 
 enum WeatherEndpoint: Endpoint {
     case weatherForecast(latitude: String, longitude: String)
-    case fiveDayForecast()
+    case dailyForecast(latitude: String, longitude: String)
     
     var baseUrl: String {
         return "http://api.openweathermap.org"
@@ -20,8 +20,8 @@ enum WeatherEndpoint: Endpoint {
         switch self {
         case .weatherForecast(_, _):
             return "/data/2.5/weather"
-        case .fiveDayForecast():
-            return ""
+        case .dailyForecast(_, _):
+            return "/data/2.5/forecast"
         }
     }
     
@@ -34,8 +34,12 @@ enum WeatherEndpoint: Endpoint {
             let latQueryItem = URLQueryItem(name: "lat", value: latitude)
             let lonQueryItem = URLQueryItem(name: "lon", value: longitude)
             return [APPIDQueryItem, unitsQueryItem, latQueryItem, lonQueryItem]
-        case .fiveDayForecast():
-            return []
+        case .dailyForecast(let latitude, let longitude):
+            let APPIDQueryItem = URLQueryItem(name: "APPID", value: "2425160e3db8a9d9203125d347bb5380")
+            let unitsQueryItem = URLQueryItem(name: "units", value: "metric")
+            let latQueryItem = URLQueryItem(name: "lat", value: latitude)
+            let lonQueryItem = URLQueryItem(name: "lon", value: longitude)
+            return [APPIDQueryItem, unitsQueryItem, latQueryItem, lonQueryItem]
         }
     }
 }

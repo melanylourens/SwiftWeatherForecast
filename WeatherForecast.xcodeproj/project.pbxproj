@@ -18,6 +18,8 @@
 		40077183210FA2C200562F46 /* WeatherEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40077182210FA2C200562F46 /* WeatherEndpoint.swift */; };
 		40077187210FA2EB00562F46 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40077185210FA2EB00562F46 /* UIColorExtension.swift */; };
 		40077188210FA2EB00562F46 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40077186210FA2EB00562F46 /* CurrentWeather.swift */; };
+		4007718A2110C0C400562F46 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400771892110C0C400562F46 /* Forecast.swift */; };
+		4007718E2110C22300562F46 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4007718D2110C22300562F46 /* Weather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		40077182210FA2C200562F46 /* WeatherEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEndpoint.swift; sourceTree = "<group>"; };
 		40077185210FA2EB00562F46 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		40077186210FA2EB00562F46 /* CurrentWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
+		400771892110C0C400562F46 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		4007718D2110C22300562F46 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 			children = (
 				40077185210FA2EB00562F46 /* UIColorExtension.swift */,
 				40077186210FA2EB00562F46 /* CurrentWeather.swift */,
+				400771892110C0C400562F46 /* Forecast.swift */,
+				4007718D2110C22300562F46 /* Weather.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,7 +178,9 @@
 				4007717F210FA2B400562F46 /* WeatherAPIClient.swift in Sources */,
 				40077187210FA2EB00562F46 /* UIColorExtension.swift in Sources */,
 				40077188210FA2EB00562F46 /* CurrentWeather.swift in Sources */,
+				4007718E2110C22300562F46 /* Weather.swift in Sources */,
 				40077158210F938000562F46 /* ViewController.swift in Sources */,
+				4007718A2110C0C400562F46 /* Forecast.swift in Sources */,
 				4007712F210C624F00562F46 /* AppDelegate.swift in Sources */,
 				40077180210FA2B400562F46 /* APIClient.swift in Sources */,
 				40077181210FA2B400562F46 /* Endpoint.swift in Sources */,
