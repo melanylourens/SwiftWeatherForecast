@@ -12,13 +12,21 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     
+    @IBOutlet weak var loadingIndicatior: UIActivityIndicatorView!
     @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var currentTemp: UILabel!
+    @IBOutlet weak var currentCity: UILabel!
+    @IBOutlet weak var bigCurrentTemp: UILabel!
     @IBOutlet weak var weatherType: UILabel!
+    @IBOutlet weak var bottomContainer: UIView!
+    @IBOutlet weak var minTemp: UILabel!
+    @IBOutlet weak var smallCurrentTemp: UILabel!
+    @IBOutlet weak var maxTemp: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        UILabel.appearance().textColor = UIColor.white
+        loadingIndicatior.startAnimating()
+        
         isAuthorizedtoGetUserLocation()
 
         if CLLocationManager.locationServicesEnabled() {
@@ -49,9 +57,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location: CLLocationCoordinate2D = locations.first?.coordinate { //manager.location!.coordinate
-            print("locations", location.latitude, location.longitude)
+            print("locations", location.latitude, location.longitude, locations.first!)
             fetchWeather(latitude: location.latitude, longitude: location.longitude)
             fetchForecast(latitude: location.latitude, longitude: location.longitude)
+            locationManager.stopUpdatingLocation()
         }
     }
 
@@ -68,16 +77,30 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func updateUIFields(weather: CurrentWeather) {
-        if let currentTempText = weather.temp?.current {
-            DispatchQueue.main.async {
-                self.currentTemp.text = String(format: "%.0f\u{00B0}", currentTempText.rounded())
+        DispatchQueue.main.async {
+            if let currentCity = weather.city {
+                self.currentCity.text = String(currentCity)
             }
-        }
-
-        if let weatherTypeText = weather.temp?.current {
-            DispatchQueue.main.async {
-                self.weatherType.text = String(weatherTypeText)
+            
+            if let currentTempText = weather.temp?.current {
+                self.bigCurrentTemp.text = String(format: "%.0f\u{00B0}", currentTempText.rounded())
+                self.smallCurrentTemp.text = String(format: "%.0f\u{00B0}", currentTempText.rounded())
             }
+            
+            if let weatherTypeText = weather.weather?.first?.type {
+                self.weatherType.text = String(weatherTypeText).uppercased()
+                self.bottomContainer.backgroundColor = UIColor.blue
+            }
+            
+            if let minTempText = weather.temp?.min {
+                self.minTemp.text = String(format: "\(minTempText)\u{00B0}")
+            }
+            
+            if let maxTempText = weather.temp?.max {
+                self.maxTemp.text = String(format: "\(maxTempText)\u{00B0}")
+            }
+            
+            self.loadingIndicatior.stopAnimating()
         }
     }
     
@@ -94,6 +117,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func updateUIFields(forecast: Forecast) {
+        DispatchQueue.main.async {
+            self.loadingIndicatior.stopAnimating()
+        }
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -115,6 +141,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
         alertController.addAction(openAction)
 
+        loadingIndicatior.stopAnimating()
         self.present(alertController, animated: true, completion: nil)
     }
 

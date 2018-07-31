@@ -9,19 +9,19 @@
 import Foundation
 
 struct CurrentWeather: Codable {
-    let name : String?
+    let city : String?
     let temp : Temp?
     let weather : [Weather]?
     
     enum CodingKeys: String, CodingKey {
-        case name = "name"
+        case city = "name"
         case temp = "main"
         case weather = "weather"
     }
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        name = try values.decodeIfPresent(String.self, forKey: .name)
+        city = try values.decodeIfPresent(String.self, forKey: .city)
         temp = try values.decodeIfPresent(Temp.self, forKey: .temp)
         weather = try values.decodeIfPresent([Weather].self, forKey: .weather)
     }
