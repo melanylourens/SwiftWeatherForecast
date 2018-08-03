@@ -42,10 +42,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKL-Xi-ROM" userLabel="Bottom Container">
-                                <rect key="frame" x="0.0" y="312" width="375" height="355"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKL-Xi-ROM" userLabel="Min Max Container">
+                                <rect key="frame" x="0.0" y="312" width="375" height="76.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-ER-Nnw" userLabel="MinMax">
+                                    <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-ER-Nnw" userLabel="Min Max">
                                         <rect key="frame" x="16" y="16" width="343" height="44.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="C1u-jp-3bv">
@@ -104,22 +104,34 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="RXF-ER-Nnw" secondAttribute="bottom" constant="16" id="0mp-bV-Wgm"/>
                                     <constraint firstAttribute="trailing" secondItem="RXF-ER-Nnw" secondAttribute="trailing" constant="16" id="DTH-M4-qRf"/>
                                     <constraint firstItem="RXF-ER-Nnw" firstAttribute="top" secondItem="CKL-Xi-ROM" secondAttribute="top" constant="16" id="Dvq-bM-fhs"/>
                                     <constraint firstItem="RXF-ER-Nnw" firstAttribute="leading" secondItem="CKL-Xi-ROM" secondAttribute="leading" constant="16" id="Hip-pd-soH"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YLe-dv-QYe">
+                                <rect key="frame" x="0.0" y="388.5" width="375" height="278.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Noz-x6-GRd"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="odU-pl-waG"/>
+                                </connections>
+                            </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="smI-fQ-g0T">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="smI-fQ-g0T" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Clg-y0-D3K"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CKL-Xi-ROM" secondAttribute="bottom" id="GCe-RI-kQq"/>
+                            <constraint firstItem="YLe-dv-QYe" firstAttribute="top" secondItem="CKL-Xi-ROM" secondAttribute="bottom" id="GCe-RI-kQq"/>
                             <constraint firstItem="GGV-K8-HYM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="I3V-a3-a33"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uNP-HH-1WX" secondAttribute="trailing" id="Kih-BU-SNl"/>
+                            <constraint firstItem="YLe-dv-QYe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="R8h-lG-QGJ"/>
+                            <constraint firstItem="YLe-dv-QYe" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="RRN-O1-hXA"/>
                             <constraint firstItem="zxa-aU-IaR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TKa-hh-X3c"/>
                             <constraint firstItem="CKL-Xi-ROM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vbg-Za-6kB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YLe-dv-QYe" secondAttribute="bottom" id="Vgy-hk-dwd"/>
                             <constraint firstItem="smI-fQ-g0T" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aro-7f-YbI"/>
                             <constraint firstItem="GGV-K8-HYM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="f1x-8X-OTq"/>
                             <constraint firstItem="zxa-aU-IaR" firstAttribute="top" secondItem="uNP-HH-1WX" secondAttribute="bottom" constant="50" id="gOk-ti-03Z"/>
@@ -138,10 +150,11 @@
                     <connections>
                         <outlet property="backgroundImage" destination="GGV-K8-HYM" id="2X5-jA-bwf"/>
                         <outlet property="bigCurrentTemp" destination="zxa-aU-IaR" id="SuH-jK-ytq"/>
-                        <outlet property="bottomContainer" destination="CKL-Xi-ROM" id="oub-XX-FGQ"/>
                         <outlet property="currentCity" destination="uNP-HH-1WX" id="FEd-vg-obH"/>
+                        <outlet property="forecastTableView" destination="YLe-dv-QYe" id="hsq-qU-OsV"/>
                         <outlet property="loadingIndicatior" destination="smI-fQ-g0T" id="tx3-Up-3XA"/>
                         <outlet property="maxTemp" destination="YJG-R6-iNy" id="GSg-8p-bHQ"/>
+                        <outlet property="minMaxContainer" destination="CKL-Xi-ROM" id="oub-XX-FGQ"/>
                         <outlet property="minTemp" destination="k8Y-HC-E0h" id="GFe-kx-Xmc"/>
                         <outlet property="smallCurrentTemp" destination="lwp-uU-cwn" id="SEB-5v-Wha"/>
                         <outlet property="weatherType" destination="RDp-r1-SfJ" id="7xu-2i-Hln"/>

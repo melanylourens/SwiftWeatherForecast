@@ -9,23 +9,27 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
     let locationManager = CLLocationManager()
+    var forecast: Forecast?
     
     @IBOutlet weak var loadingIndicatior: UIActivityIndicatorView!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var currentCity: UILabel!
     @IBOutlet weak var bigCurrentTemp: UILabel!
     @IBOutlet weak var weatherType: UILabel!
-    @IBOutlet weak var bottomContainer: UIView!
+    @IBOutlet weak var minMaxContainer: UIView!
     @IBOutlet weak var minTemp: UILabel!
     @IBOutlet weak var smallCurrentTemp: UILabel!
     @IBOutlet weak var maxTemp: UILabel!
+    @IBOutlet weak var forecastTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UILabel.appearance().textColor = UIColor.white
         loadingIndicatior.startAnimating()
+        UILabel.appearance().textColor = UIColor.white
+        forecastTableView.register(UINib(nibName: "ForecastTableViewCell", bundle: nil), forCellReuseIdentifier: "ForecastTableViewCell")
+        forecastTableView.separatorColor = UIColor.clear
         
         isAuthorizedtoGetUserLocation()
 
@@ -89,7 +93,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             
             if let weatherTypeText = weather.weather?.first?.type {
                 self.weatherType.text = String(weatherTypeText).uppercased()
-                self.bottomContainer.backgroundColor = UIColor.blue
+                self.minMaxContainer.backgroundColor = UIColor.blue
+                self.forecastTableView.backgroundColor = UIColor.blue
             }
             
             if let minTempText = weather.temp?.min {
@@ -109,6 +114,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             switch result {
             case .value(let forecast):
                 print("forecast", forecast)
+                self.forecast = forecast
                 self.updateUIFields(forecast: forecast)
             case .error(let error):
                 print("error", error)
@@ -147,7 +153,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let count = forecast?.forecastList.count {
+            return count
+        }
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastTableViewCell", for: indexPath) as! ForecastTableViewCell
+        if let dayForecast = self.forecast?.forecastList[indexPath.row] {
+            cell.configureWith(dayForecast: dayForecast)
+        }
+        return cell
     }
 
 }
