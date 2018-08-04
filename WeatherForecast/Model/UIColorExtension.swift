@@ -11,13 +11,23 @@ import UIKit
 
 extension UIColor
 {
-    class func someColor1() -> UIColor
+    class func cloudy() -> UIColor
     {
-        return UIColor(red: 74, green: 144, blue: 226, alpha:1.0)
+        return UIColor(red: 97/255.0, green: 133/255.0, blue: 149/255.0, alpha: 1.0)
     }
     
-    class func someColor2() -> UIColor
+    class func sunny() -> UIColor
     {
-        return UIColor(red: 74, green: 144, blue: 226, alpha:1.0)
+        return UIColor(red: 73/255.0, green: 144/255.0, blue: 226/255.0, alpha: 1.0)
+    }
+    
+    class func rainy() -> UIColor
+    {
+        return UIColor(red: 88/255.0, green: 87/255.0, blue: 93/255.0, alpha: 1.0)
+    }
+    
+    class func other() -> UIColor
+    {
+        return UIColor(red: 165/255.0, green: 165/255.0, blue: 165/255.0, alpha: 1.0)
     }
 }

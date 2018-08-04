@@ -11,7 +11,13 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
     let locationManager = CLLocationManager()
-    var forecast: Forecast?
+    var forecast: Forecast? {
+        didSet {
+            DispatchQueue.main.async {
+                self.forecastTableView?.reloadData();
+            }
+        }
+    }
     
     @IBOutlet weak var loadingIndicatior: UIActivityIndicatorView!
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -29,7 +35,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         loadingIndicatior.startAnimating()
         UILabel.appearance().textColor = UIColor.white
         forecastTableView.register(UINib(nibName: "ForecastTableViewCell", bundle: nil), forCellReuseIdentifier: "ForecastTableViewCell")
-        forecastTableView.separatorColor = UIColor.clear
         
         isAuthorizedtoGetUserLocation()
 
@@ -92,9 +97,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
             }
             
             if let weatherTypeText = weather.weather?.first?.type {
-                self.weatherType.text = String(weatherTypeText).uppercased()
-                self.minMaxContainer.backgroundColor = UIColor.blue
-                self.forecastTableView.backgroundColor = UIColor.blue
+                let weatherType = String(weatherTypeText)
+                self.weatherType.text = weatherType.uppercased()
+                self.changeBackground(weatherType: weatherType)
             }
             
             if let minTempText = weather.temp?.min {
@@ -109,23 +114,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         }
     }
     
+    func changeBackground(weatherType: String) {
+        if let weatherType = WeatherType(rawValue: weatherType.lowercased()) {
+            self.minMaxContainer.backgroundColor = weatherType.color
+            self.forecastTableView.backgroundColor = weatherType.color
+            self.backgroundImage.image = weatherType.image
+        } else {
+            self.minMaxContainer.backgroundColor = WeatherType.other.color
+            self.forecastTableView.backgroundColor = WeatherType.other.color
+            self.backgroundImage.image = WeatherType.other.image
+        }
+    }
+    
     func fetchForecast(latitude: Double, longitude: Double) {
         WeatherAPIClient().fetchForecast(latitude: String(latitude), longitude: String(longitude), completion: { (result) in
             switch result {
             case .value(let forecast):
                 print("forecast", forecast)
                 self.forecast = forecast
-                self.updateUIFields(forecast: forecast)
             case .error(let error):
                 print("error", error)
             }
         })
-    }
-    
-    func updateUIFields(forecast: Forecast) {
-        DispatchQueue.main.async {
-            self.loadingIndicatior.stopAnimating()
-        }
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -155,15 +165,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         super.didReceiveMemoryWarning()
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = forecast?.forecastList.count {
             return count
         }
-        return 10
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

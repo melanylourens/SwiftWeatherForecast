@@ -26,7 +26,6 @@ enum WeatherEndpoint: Endpoint {
     }
     
     var queryItems: [URLQueryItem] {
-        
         switch self {
         case .weatherForecast(let latitude, let longitude):
             let APPIDQueryItem = URLQueryItem(name: "APPID", value: "2425160e3db8a9d9203125d347bb5380")

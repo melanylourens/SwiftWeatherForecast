@@ -24,10 +24,20 @@ class ForecastTableViewCell: UITableViewCell {
     
     func configureWith(dayForecast: ForecastList) {
         DispatchQueue.main.async {
-            self.weekdayLabel.text = dayForecast.date
-            self.imageView?.image = UIImage(named: dayForecast.weather.description)
-            self.tempLabel.text = String(format: "%.0f\u{00B0}", dayForecast.temp.current.rounded())
+            if let weekday = self.getDayOfTheWeek(dayForecast.date) {
+                self.weekdayLabel.text = weekday
+            }             
+            self.tempImage?.image = UIImage(named: dayForecast.weather[0].type.lowercased())
+            self.tempLabel.text = String(format: "%.0f\u{00B0}", dayForecast.temp.max.rounded())
         }
+    }
+    
+    private func getDayOfTheWeek(_ day:String) -> String? {
+        let formatter  = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        guard let dayDate = formatter.date(from: day) else { return nil }
+        formatter.dateFormat = "EEEE"
+        return formatter.string(from: dayDate).capitalized
     }
     
 }

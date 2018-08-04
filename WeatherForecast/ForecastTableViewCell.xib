@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hk-sz-XE7" userLabel="Weekday">
-                        <rect key="frame" x="16" y="8" width="113" height="14"/>
+                        <rect key="frame" x="16" y="4" width="113" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -31,7 +31,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5cN-eT-Bbx">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sea_cloudy" translatesAutoresizingMaskIntoConstraints="NO" id="5cN-eT-Bbx">
                         <rect key="frame" x="145" y="0.0" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="AL5-Fl-99w"/>
@@ -46,11 +46,10 @@
                     <constraint firstItem="7hk-sz-XE7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="BcJ-f6-KK1"/>
                     <constraint firstItem="5cN-eT-Bbx" firstAttribute="leading" secondItem="7hk-sz-XE7" secondAttribute="trailing" constant="16" id="Q50-dx-a1Y"/>
                     <constraint firstAttribute="trailing" secondItem="oGF-dG-8wm" secondAttribute="trailing" constant="16" id="TPg-Md-D6p"/>
-                    <constraint firstItem="7hk-sz-XE7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="X6x-BD-QyW"/>
-                    <constraint firstItem="7hk-sz-XE7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="YAU-CT-teQ"/>
+                    <constraint firstItem="7hk-sz-XE7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="YAU-CT-teQ"/>
                     <constraint firstAttribute="bottom" secondItem="5cN-eT-Bbx" secondAttribute="bottom" id="cIY-16-keF"/>
                     <constraint firstAttribute="bottom" secondItem="oGF-dG-8wm" secondAttribute="bottom" constant="8" id="gVT-7o-gXn"/>
-                    <constraint firstAttribute="bottom" secondItem="7hk-sz-XE7" secondAttribute="bottom" constant="8" id="itk-3T-0dY"/>
+                    <constraint firstAttribute="bottom" secondItem="7hk-sz-XE7" secondAttribute="bottom" constant="4" id="itk-3T-0dY"/>
                     <constraint firstItem="oGF-dG-8wm" firstAttribute="leading" secondItem="5cN-eT-Bbx" secondAttribute="trailing" constant="16" id="mRR-xx-twB"/>
                     <constraint firstItem="5cN-eT-Bbx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="thN-7p-oiH"/>
                     <constraint firstItem="oGF-dG-8wm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="y9I-gA-gFz"/>
@@ -69,4 +68,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="sea_cloudy" width="360" height="320"/>
+    </resources>
 </document>

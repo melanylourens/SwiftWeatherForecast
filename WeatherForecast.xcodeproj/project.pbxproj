@@ -22,6 +22,7 @@
 		4007718E2110C22300562F46 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4007718D2110C22300562F46 /* Weather.swift */; };
 		400771912114ED5900562F46 /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4007718F2114ED5900562F46 /* ForecastTableViewCell.swift */; };
 		400771922114ED5900562F46 /* ForecastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 400771902114ED5900562F46 /* ForecastTableViewCell.xib */; };
+		40077198211611A700562F46 /* WeatherType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40077197211611A700562F46 /* WeatherType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		4007718D2110C22300562F46 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		4007718F2114ED5900562F46 /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
 		400771902114ED5900562F46 /* ForecastTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastTableViewCell.xib; sourceTree = "<group>"; };
+		40077197211611A700562F46 /* WeatherType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				40077186210FA2EB00562F46 /* CurrentWeather.swift */,
 				400771892110C0C400562F46 /* Forecast.swift */,
 				4007718D2110C22300562F46 /* Weather.swift */,
+				40077197211611A700562F46 /* WeatherType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				40077188210FA2EB00562F46 /* CurrentWeather.swift in Sources */,
 				4007718E2110C22300562F46 /* Weather.swift in Sources */,
 				40077158210F938000562F46 /* ViewController.swift in Sources */,
+				40077198211611A700562F46 /* WeatherType.swift in Sources */,
 				4007718A2110C0C400562F46 /* Forecast.swift in Sources */,
 				4007712F210C624F00562F46 /* AppDelegate.swift in Sources */,
 				40077180210FA2B400562F46 /* APIClient.swift in Sources */,
@@ -339,6 +343,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X3T8VSAM23;
 				INFOPLIST_FILE = WeatherForecast/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -357,6 +362,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X3T8VSAM23;
 				INFOPLIST_FILE = WeatherForecast/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
