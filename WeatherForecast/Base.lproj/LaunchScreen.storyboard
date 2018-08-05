@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" image="sea_sunnypng" translatesAutoresizingMaskIntoConstraints="NO" id="axj-La-1Z1">
-                                <rect key="frame" x="8" y="178" width="361" height="320"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="sea_sunny" translatesAutoresizingMaskIntoConstraints="NO" id="axj-La-1Z1">
+                                <rect key="frame" x="7.5" y="183" width="360" height="320"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -36,6 +35,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="sea_sunnypng" width="360" height="320"/>
+        <image name="sea_sunny" width="360" height="320"/>
     </resources>
 </document>

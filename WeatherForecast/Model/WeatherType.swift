@@ -1,5 +1,5 @@
 //
-//  WeatherTypeImage.swift
+//  WeatherType.swift
 //  WeatherForecast
 //
 //  Created by Melany Lourens on 2018/08/04.

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sea_sunnypng" translatesAutoresizingMaskIntoConstraints="NO" id="GGV-K8-HYM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sea_sunny" translatesAutoresizingMaskIntoConstraints="NO" id="GGV-K8-HYM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
@@ -128,12 +127,8 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="odU-pl-waG"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="smI-fQ-g0T">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                            </activityIndicatorView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="smI-fQ-g0T" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Clg-y0-D3K"/>
                             <constraint firstItem="YLe-dv-QYe" firstAttribute="top" secondItem="CKL-Xi-ROM" secondAttribute="bottom" id="GCe-RI-kQq"/>
                             <constraint firstItem="GGV-K8-HYM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="I3V-a3-a33"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uNP-HH-1WX" secondAttribute="trailing" id="Kih-BU-SNl"/>
@@ -142,7 +137,6 @@
                             <constraint firstItem="zxa-aU-IaR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TKa-hh-X3c"/>
                             <constraint firstItem="CKL-Xi-ROM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vbg-Za-6kB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YLe-dv-QYe" secondAttribute="bottom" id="Vgy-hk-dwd"/>
-                            <constraint firstItem="smI-fQ-g0T" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aro-7f-YbI"/>
                             <constraint firstItem="GGV-K8-HYM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="f1x-8X-OTq"/>
                             <constraint firstItem="zxa-aU-IaR" firstAttribute="top" secondItem="uNP-HH-1WX" secondAttribute="bottom" constant="50" id="gOk-ti-03Z"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CKL-Xi-ROM" secondAttribute="trailing" id="hDF-Dl-9CJ"/>
@@ -162,7 +156,6 @@
                         <outlet property="bigCurrentTemp" destination="zxa-aU-IaR" id="SuH-jK-ytq"/>
                         <outlet property="currentCity" destination="uNP-HH-1WX" id="FEd-vg-obH"/>
                         <outlet property="forecastTableView" destination="YLe-dv-QYe" id="hsq-qU-OsV"/>
-                        <outlet property="loadingIndicatior" destination="smI-fQ-g0T" id="tx3-Up-3XA"/>
                         <outlet property="maxTemp" destination="YJG-R6-iNy" id="GSg-8p-bHQ"/>
                         <outlet property="minMaxContainer" destination="CKL-Xi-ROM" id="oub-XX-FGQ"/>
                         <outlet property="minTemp" destination="k8Y-HC-E0h" id="GFe-kx-Xmc"/>
@@ -176,6 +169,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="sea_sunnypng" width="360" height="320"/>
+        <image name="sea_sunny" width="360" height="320"/>
     </resources>
 </document>

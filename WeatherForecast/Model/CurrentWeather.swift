@@ -1,5 +1,5 @@
 //
-//  Forecast.swift
+//  CurrentWeather.swift
 //  WeatherForecast
 //
 //  Created by Melany Lourens on 2018/07/30.

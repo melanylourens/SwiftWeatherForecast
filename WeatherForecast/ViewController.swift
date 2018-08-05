@@ -29,10 +29,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     @IBOutlet weak var smallCurrentTemp: UILabel!
     @IBOutlet weak var maxTemp: UILabel!
     @IBOutlet weak var forecastTableView: UITableView!
+    var loadingOverlay: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingIndicatior.startAnimating()
+        view.showBlurLoader()
         UILabel.appearance().textColor = UIColor.white
         forecastTableView.register(UINib(nibName: "ForecastTableViewCell", bundle: nil), forCellReuseIdentifier: "ForecastTableViewCell")
         
@@ -44,6 +45,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
             locationManager.startUpdatingLocation()
         } else {
             print("Location services not enabled")
+            view.removeBlurLoader()
         }
     }
     
@@ -56,11 +58,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .denied {
             showLocationDisabledAlert()
-        } else if status == .authorizedWhenInUse {
-            print("User allowed us to access location")
-            if CLLocationManager.locationServicesEnabled() {
-                locationManager.startUpdatingLocation()
-            }
         }
     }
 
@@ -109,8 +106,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
             if let maxTempText = weather.temp?.max {
                 self.maxTemp.text = String(format: "\(maxTempText)\u{00B0}")
             }
-            
-            self.loadingIndicatior.stopAnimating()
         }
     }
     
@@ -130,8 +125,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         WeatherAPIClient().fetchForecast(latitude: String(latitude), longitude: String(longitude), completion: { (result) in
             switch result {
             case .value(let forecast):
-                print("forecast", forecast)
                 self.forecast = forecast
+                self.view.removeBlurLoader()
             case .error(let error):
                 print("error", error)
             }
@@ -157,7 +152,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
 
         alertController.addAction(openAction)
 
-        loadingIndicatior.stopAnimating()
+        view.removeBlurLoader()
         self.present(alertController, animated: true, completion: nil)
     }
 
