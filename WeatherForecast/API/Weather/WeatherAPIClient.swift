@@ -29,9 +29,9 @@ class WeatherAPIClient: APIClient {
         
     }
     
-    func fetchForecast(latitude: String, longitude: String, completion: @escaping (Result<Forecast, APIError>) -> Void) {
+    func fetchForecast(latitude: String, longitude: String, completion: @escaping (Result<ForecastList, APIError>) -> Void) {
         let request = WeatherEndpoint.dailyForecast(latitude: latitude, longitude: longitude).request
-        self.fetch(with: request) { (result: Result<Forecast, APIError>) in
+        self.fetch(with: request) { (result: Result<ForecastList, APIError>) in
             switch result {
             case .value(let forecast):
                 completion(.value(forecast))

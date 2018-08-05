@@ -11,7 +11,7 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
     let locationManager = CLLocationManager()
-    var forecast: Forecast? {
+    var forecastList: [Forecast]? {
         didSet {
             DispatchQueue.main.async {
                 self.forecastTableView?.reloadData();
@@ -93,7 +93,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
             
             if let weatherTypeText = weather.weather?.first?.type {
                 let weatherType = String(weatherTypeText)
-                self.weatherType.text = weatherType.uppercased()
+                if let weatherTypeTitle = WeatherType(rawValue: weatherType.lowercased())?.title {
+                    self.weatherType.text = weatherTypeTitle
+                } else {
+                    self.weatherType.text = weatherType.uppercased()
+                }
                 self.changeBackground(weatherType: weatherType)
             }
             
@@ -123,7 +127,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         WeatherAPIClient().fetchForecast(latitude: String(latitude), longitude: String(longitude), completion: { (result) in
             switch result {
             case .value(let forecast):
-                self.forecast = forecast
+                self.forecastList = forecast.forecastList.filter { $0.date.contains("15:00:00") }
                 self.view.removeBlurLoader()
             case .error(let error):
                 print("Forecast error", error)
@@ -161,7 +165,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let count = forecast?.forecastList.count {
+        if let count = forecastList?.count {
             return count
         }
         return 0
@@ -169,7 +173,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastTableViewCell", for: indexPath) as! ForecastTableViewCell
-        if let dayForecast = self.forecast?.forecastList[indexPath.row] {
+        if let dayForecast = self.forecastList?[indexPath.row] {
             cell.configureWith(dayForecast: dayForecast)
         }
         return cell

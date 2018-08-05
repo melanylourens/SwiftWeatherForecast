@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct Forecast : Codable {
-    let forecastList : [ForecastList]
+struct ForecastList: Codable {
+    let forecastList : [Forecast]
     
     enum CodingKeys: String, CodingKey {
         case forecastList = "list"
     }    
 }
 
-struct ForecastList : Codable {
+struct Forecast: Codable {
     let date : String
     let temp : ForecastTemp
     let weather : [Weather]
@@ -28,7 +28,7 @@ struct ForecastList : Codable {
     }
 }
 
-struct ForecastTemp : Codable {
+struct ForecastTemp: Codable {
     let current : Double
     let min : Double
     let max : Double

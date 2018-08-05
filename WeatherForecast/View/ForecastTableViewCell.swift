@@ -22,7 +22,7 @@ class ForecastTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configureWith(dayForecast: ForecastList) {
+    func configureWith(dayForecast: Forecast) {
         DispatchQueue.main.async {
             if let weekday = self.getDayOfTheWeek(dayForecast.date) {
                 self.weekdayLabel.text = weekday
