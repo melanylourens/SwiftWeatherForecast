@@ -24,6 +24,7 @@
 		400771922114ED5900562F46 /* ForecastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 400771902114ED5900562F46 /* ForecastTableViewCell.xib */; };
 		40077198211611A700562F46 /* WeatherType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40077197211611A700562F46 /* WeatherType.swift */; };
 		405FF1B521174AB20062FC7F /* BlurLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405FF1B421174AB20062FC7F /* BlurLoader.swift */; };
+		405FF1B92117543D0062FC7F /* BlurError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405FF1B82117543D0062FC7F /* BlurError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		400771902114ED5900562F46 /* ForecastTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastTableViewCell.xib; sourceTree = "<group>"; };
 		40077197211611A700562F46 /* WeatherType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherType.swift; sourceTree = "<group>"; };
 		405FF1B421174AB20062FC7F /* BlurLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurLoader.swift; sourceTree = "<group>"; };
+		405FF1B82117543D0062FC7F /* BlurError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				405FF1B421174AB20062FC7F /* BlurLoader.swift */,
+				405FF1B82117543D0062FC7F /* BlurError.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4007717F210FA2B400562F46 /* WeatherAPIClient.swift in Sources */,
+				405FF1B92117543D0062FC7F /* BlurError.swift in Sources */,
 				40077187210FA2EB00562F46 /* WeatherTypeColor.swift in Sources */,
 				40077188210FA2EB00562F46 /* CurrentWeather.swift in Sources */,
 				4007718E2110C22300562F46 /* Weather.swift in Sources */,

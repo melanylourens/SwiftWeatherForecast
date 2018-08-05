@@ -44,8 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         } else {
-            print("Location services not enabled")
-            view.removeBlurLoader()
+            view.showBlurError("Location services not enabled")
         }
     }
     
@@ -62,8 +61,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location: CLLocationCoordinate2D = locations.first?.coordinate { //manager.location!.coordinate
-            print("locations", location.latitude, location.longitude, locations.first!)
+        if let location: CLLocationCoordinate2D = locations.first?.coordinate {
             fetchWeather(latitude: location.latitude, longitude: location.longitude)
             fetchForecast(latitude: location.latitude, longitude: location.longitude)
             locationManager.stopUpdatingLocation()
@@ -74,10 +72,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         WeatherAPIClient().fetchWeather(latitude: String(latitude), longitude: String(longitude), completion: { (result) in
             switch result {
             case .value(let weather):
-                print("weather", weather)
                 self.updateUIFields(weather: weather)
             case .error(let error):
-                print("error", error)
+                print("Weather error", error)
+                self.view.showBlurError("Error fetching weather")
             }
         })
     }
@@ -128,7 +126,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
                 self.forecast = forecast
                 self.view.removeBlurLoader()
             case .error(let error):
-                print("error", error)
+                print("Forecast error", error)
+                self.view.showBlurError("Error fetching forecast")
             }
         })
     }
@@ -140,9 +139,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     func showLocationDisabledAlert() {
         let alertController = UIAlertController(title: "Location access denied", message: "We need access to your location in order to display the weather at your current location", preferredStyle: .alert)
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            self.view.showBlurError("Location access denied")
+        }
         alertController.addAction(cancelAction)
-        //Show error page
 
         let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
             if let url = URL(string: UIApplicationOpenSettingsURLString) {
